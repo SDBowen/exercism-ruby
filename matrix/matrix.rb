@@ -21,7 +21,7 @@ class Matrix
 
     i = 0
     while i < rows.length
-      matrix_columns << rows.map { |array| array[i] }
+      matrix_columns << rows.map { |row| row[i] }
 
       i += 1
     end
