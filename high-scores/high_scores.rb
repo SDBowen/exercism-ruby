@@ -6,24 +6,24 @@ class HighScores
   attr_reader :scores
 
   def latest
-    @scores.last
+    scores.last
   end
 
   def personal_best
-    @scores.max
+    scores.max
   end
 
   def personal_top
-    highest_to_lowest = @scores.sort { |a, b| b <=> a }
-    highest_to_lowest.take(3)
+    scores.sort.reverse.take(3)
   end
 
   def report
-    score_difference = personal_best - latest
-    personal_best_message = 'your personal best!'
+    difference_from_personal_best = personal_best - latest
 
-    personal_best_message.prepend("#{score_difference} short of ") unless score_difference.zero?
-
-    "Your latest score was #{latest}. That's #{personal_best_message}"
+    if difference_from_personal_best.zero?
+      "Your latest score was #{latest}. That's your personal best!"
+    else
+      "Your latest score was #{latest}. That's #{difference_from_personal_best} short of your personal best!"
+    end
   end
 end
