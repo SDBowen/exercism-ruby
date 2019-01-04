@@ -1,10 +1,12 @@
 class Raindrops
   def self.convert(number)
+    rain_sounds = { 3 => 'Pling', 5 => 'Plang', 7 => 'Plong'}
+
     message = ''
 
-    message << 'Pling' if (number % 3).zero?
-    message << 'Plang' if (number % 5).zero?
-    message << 'Plong' if (number % 7).zero?
+    rain_sounds.each do |factor, sound|
+      message << sound if (number % factor).zero?
+    end
 
     message << number.to_s if message.empty?
 
