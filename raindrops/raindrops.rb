@@ -1,18 +1,13 @@
-require 'prime'
-
 class Raindrops
   def self.convert(number)
-    prime_numbers = number.prime_division.map(&:first)
     message = ''
 
-    prime_numbers.each do |num|
-      message << 'Pling' if num == 3
-      message << 'Plang' if num == 5
-      message << 'Plong' if num == 7
-    end
+    message << 'Pling' if (number % 3).zero?
+    message << 'Plang' if (number % 5).zero?
+    message << 'Plong' if (number % 7).zero?
 
     message << number.to_s if message.empty?
 
-    return message
+    message
   end
 end
