@@ -1,26 +1,19 @@
 class Series
-  def initialize(string)
-    @string = string
+  def initialize(digits)
+    @digits = digits
   end
 
-  
+  def slices(num_of_slices)
+    raise ArgumentError if num_of_slices > @digits.length
 
-  def slices(num)
-    raise ArgumentError if (num > @string.length)
-    
     sliced_series = []
-    
-    @string.chars.each_with_index do |_char, index|
-      current_slice = @string.slice(index, num)
-      
-      if (current_slice.length == num)
-        sliced_series << current_slice
-      end
+
+    @digits.chars.each_with_index do |_char, index|
+      current_slice = @digits.slice(index, num_of_slices)
+
+      sliced_series << current_slice if current_slice.length == num_of_slices
     end
 
     sliced_series
   end
-  
 end
-
-# @string.chars.each_slice(num).map(&:join)
